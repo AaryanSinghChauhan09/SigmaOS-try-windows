@@ -1,11 +1,24 @@
-//! SigmaOS-try-windows — Windows environment trial launcher for SigmaOS
-//!
-//! Part of the SigmaOS multi-repository ecosystem.
-//! See https://github.com/AaryanSinghChauhan09/SigmaOS for details.
+#[derive(Debug, Clone, PartialEq, Eq)]
+pub struct WindowsInstallTarget {
+    pub ntfs_drive: String,
+    pub virtual_disk_gb: u32,
+}
 
-#![allow(dead_code)]
+impl WindowsInstallTarget {
+    pub fn new(drive: &str, size_gb: u32) -> Self {
+        Self { ntfs_drive: drive.into(), virtual_disk_gb: size_gb }
+    }
+}
 
-/// Module entry point for SigmaOS-try-windows
-pub fn version() -> &'static str {
-    env!("CARGO_PKG_VERSION")
+#[cfg(test)]
+mod tests {
+    use super::*;
+    #[test]
+    fn test_windows_install_target_aaa() {
+        // Arrange & Act
+        let target = WindowsInstallTarget::new("C:/", 32);
+        // Assert
+        assert_eq!(target.ntfs_drive, "C:/");
+        assert_eq!(target.virtual_disk_gb, 32);
+    }
 }

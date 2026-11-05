@@ -1,0 +1,6 @@
+[component]
+name = "SigmaOS-try-windows"
+tier = 4
+description = "Windows dual-boot installer and loopback image boot helper inspired by Mint4Win"
+contracts = ['try-windows-installer', 'wubi-style-boot-loader', 'ntfs-loop-image-shim']
+upstream_inspirations = ['https://github.com/linuxmint/mint4win']
